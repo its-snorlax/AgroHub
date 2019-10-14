@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">AbesHack</string>
+    <string name="app_name">LocationTry</string>
+    <string-array name="Crops">
+        <item>Wheat</item>
+        <item>Rice</item>
+        <item>Sugar Cane</item>
+        <item>Corn</item>
+        <item>Potato</item>
+    </string-array>
 </resources>
