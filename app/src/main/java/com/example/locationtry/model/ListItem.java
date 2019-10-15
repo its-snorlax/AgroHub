@@ -9,19 +9,19 @@ public class ListItem {
     private Main main;
     private long visiblity;
     private Wind wind;
-    private Cloud cloud;
+    private Clouds clouds;
     private int dt;
     private Sys sys;
     private int cod;
 
-    public ListItem(Coordinate coordinate, List<Weather> weathers, String base, Main main, long visiblity, Wind wind, Cloud cloud, int dt, Sys sys, int cod) {
+    public ListItem(Coordinate coordinate, List<Weather> weathers, String base, Main main, long visiblity, Wind wind, Clouds clouds, int dt, Sys sys, int cod) {
         this.coordinate = coordinate;
         this.weathers = weathers;
         this.base = base;
         this.main = main;
         this.visiblity = visiblity;
         this.wind = wind;
-        this.cloud = cloud;
+        this.clouds = clouds;
         this.dt = dt;
         this.sys = sys;
         this.cod = cod;
@@ -39,8 +39,8 @@ public class ListItem {
         return dt;
     }
 
-    public Cloud getCloud() {
-        return cloud;
+    public Clouds getClouds() {
+        return clouds;
     }
 
     public Wind getWind() {

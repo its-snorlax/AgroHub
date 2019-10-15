@@ -1,10 +1,12 @@
-package com.example.locationtry;
+package com.example.locationtry.activity;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.locationtry.R;
 
 public class SecondaryActivity extends AppCompatActivity {
     @Override
@@ -13,13 +15,13 @@ public class SecondaryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_secondary);
 
         Bundle extras = getIntent().getExtras();
-        int dt;
-        int humidity;
+        float dt;
+        float humidity;
         double temp;
         String description;
-        dt = extras.getInt("date");
-        humidity = extras.getInt("humidity");
-        temp = extras.getInt("temp");
+        dt = extras.getFloat("date");
+        humidity = extras.getFloat("humidity");
+        temp = extras.getDouble("temp");
         description = extras.getString("description");
 
         TextView dateTextView =  findViewById(R.id.date);
