@@ -28,12 +28,9 @@ import com.example.locationtry.network.ServiceBuilder;
 import com.example.locationtry.network.apiServices.WeatherService;
 import com.example.locationtry.model.ApiResponse;
 
-import java.util.List;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.HTTP;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -198,7 +195,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         String description = apiResponse.getWeather().get(0).getDescription();
         String dt_text = apiResponse.getDt_text();
 
-        Intent secondaryActivityIntent = new Intent(MainActivity.this, SecondaryActivity.class);
+        Intent secondaryActivityIntent = new Intent(MainActivity.this, WeatherActivity.class);
         secondaryActivityIntent.putExtra("date", dt);
         secondaryActivityIntent.putExtra("humidity", humidity);
         secondaryActivityIntent.putExtra("temp", temp);
