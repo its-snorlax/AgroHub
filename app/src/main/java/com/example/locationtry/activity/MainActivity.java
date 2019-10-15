@@ -23,9 +23,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import com.example.locationtry.R;
+import com.example.locationtry.model.NewApiResponse;
 import com.example.locationtry.network.ServiceBuilder;
 import com.example.locationtry.network.apiServices.WeatherService;
 import com.example.locationtry.model.ApiResponse;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -136,11 +139,12 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         WeatherService weatherService = ServiceBuilder.build(WeatherService.class);
         String key = "1e8341a66f4cfc9aa9c3b84cc6b9a295";
         Log.e("request", "send");
-        weatherService.getReport(lat, longi, key).enqueue(new Callback<ApiResponse>() {
+        weatherService.getReport(lat, longi, key).enqueue(new Callback<NewApiResponse>() {
             @Override
-            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+            public void onResponse(Call<NewApiResponse> call, Response<NewApiResponse> response) {
                 if (response.isSuccessful()) {
-                    ApiResponse responseBody = response.body();
+                    Toast.makeText(MainActivity.this, "Sucess", Toast.LENGTH_SHORT).show();
+                    NewApiResponse responseBody = response.body();
                     openDetailActivity(responseBody);
                 } else if (response.code() == 401) {
                     Toast.makeText(MainActivity.this, "UnAuth", Toast.LENGTH_SHORT).show();
@@ -151,22 +155,79 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             }
 
             @Override
-            public void onFailure(Call<ApiResponse> call, Throwable t) {
+            public void onFailure(Call NewApiResponse, Throwable t) {
                 Toast.makeText(MainActivity.this, "network call fail", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void openDetailActivity(ApiResponse responseBody) {
-        float dt = responseBody.getDt();
-        float humidity = responseBody.getMain().getHumidity();
-        double temp = responseBody.getMain().getTemp();;
-        String description = responseBody.getWeather().get(0).getDescription();;
+    private void openDetailActivity(NewApiResponse responseBody) {
+        ApiResponse apiResponse = responseBody.getList().get(1);
+        ApiResponse apiResponse2 = responseBody.getList().get(10);
+        ApiResponse apiResponse3 = responseBody.getList().get(18);
+        ApiResponse apiResponse4 = responseBody.getList().get(26);
+        ApiResponse apiResponse5 = responseBody.getList().get(34);
+
+        float dt2 = apiResponse2.getDt();
+        float humidity2 = apiResponse2.getMain().getHumidity();
+        double temp2 = apiResponse2.getMain().getTemp();
+        String description2 = apiResponse2.getWeather().get(0).getDescription();
+        String dt_text2 = apiResponse2.getDt_text();
+
+        float dt3 = apiResponse3.getDt();
+        float humidity3 = apiResponse3.getMain().getHumidity();
+        double temp3 = apiResponse3.getMain().getTemp();
+        String description3 = apiResponse3.getWeather().get(0).getDescription();
+        String dt_text3 = apiResponse3.getDt_text();
+
+        float dt4 = apiResponse4.getDt();
+        float humidity4 = apiResponse4.getMain().getHumidity();
+        double temp4 = apiResponse4.getMain().getTemp();
+        String description4 = apiResponse4.getWeather().get(0).getDescription();
+        String dt_text4 = apiResponse4.getDt_text();
+
+        float dt5 = apiResponse.getDt();
+        float humidity5 = apiResponse.getMain().getHumidity();
+        double temp5 = apiResponse.getMain().getTemp();
+        String description5 = apiResponse.getWeather().get(0).getDescription();
+        String dt_text5 = apiResponse.getDt_text();
+
+        float dt = apiResponse.getDt();
+        float humidity = apiResponse.getMain().getHumidity();
+        double temp = apiResponse.getMain().getTemp();
+        String description = apiResponse.getWeather().get(0).getDescription();
+        String dt_text = apiResponse.getDt_text();
+
         Intent secondaryActivityIntent = new Intent(MainActivity.this, SecondaryActivity.class);
         secondaryActivityIntent.putExtra("date", dt);
         secondaryActivityIntent.putExtra("humidity", humidity);
         secondaryActivityIntent.putExtra("temp", temp);
         secondaryActivityIntent.putExtra("description", description);
+        secondaryActivityIntent.putExtra("dateText",dt_text);
+
+        secondaryActivityIntent.putExtra("date2", dt2);
+        secondaryActivityIntent.putExtra("humidity2", humidity2);
+        secondaryActivityIntent.putExtra("temp2", temp2);
+        secondaryActivityIntent.putExtra("description2", description2);
+        secondaryActivityIntent.putExtra("dateText2",dt_text2);
+
+        secondaryActivityIntent.putExtra("date3", dt3);
+        secondaryActivityIntent.putExtra("humidity3", humidity3);
+        secondaryActivityIntent.putExtra("temp3", temp3);
+        secondaryActivityIntent.putExtra("description3", description3);
+        secondaryActivityIntent.putExtra("dateText3",dt_text3);
+
+        secondaryActivityIntent.putExtra("date4", dt4);
+        secondaryActivityIntent.putExtra("humidity4", humidity4);
+        secondaryActivityIntent.putExtra("temp4", temp4);
+        secondaryActivityIntent.putExtra("description4", description4);
+        secondaryActivityIntent.putExtra("dateText4",dt_text4);
+
+        secondaryActivityIntent.putExtra("date5", dt5);
+        secondaryActivityIntent.putExtra("humidity5", humidity5);
+        secondaryActivityIntent.putExtra("temp5", temp5);
+        secondaryActivityIntent.putExtra("description5", description5);
+        secondaryActivityIntent.putExtra("dateText5",dt_text5);
         startActivity(secondaryActivityIntent);
     }
 

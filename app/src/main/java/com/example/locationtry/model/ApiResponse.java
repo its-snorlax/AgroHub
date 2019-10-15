@@ -29,6 +29,8 @@ public class ApiResponse {
     private String name;
     @SerializedName("cod")
     private float cod;
+    @SerializedName("dt_txt")
+    private String dt_text;
 
 
 
@@ -130,5 +132,13 @@ public class ApiResponse {
 
     public void setWeather(ArrayList<Weather> weather) {
         this.weather = weather;
+    }
+
+    public String getDt_text() {
+        return dt_text;
+    }
+
+    public void setDt_text(String dt_text) {
+        this.dt_text = dt_text;
     }
 }
