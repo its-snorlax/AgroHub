@@ -116,22 +116,28 @@ public class WeatherActivity extends AppCompatActivity {
                 && description4.contains("clear")
                 && description5.contains("clear")) {
             alert.setText("Weather is clear, No Worries");
+            alert.setTextColor(getResources().getColor(R.color.Button));
         }
 
         if (description.contains("heavy intensity rain")) {
             alert.setText("Heavy Rain fall on " + dateText + ", Please take preventive measures");
+            alert.setTextColor(getResources().getColor(R.color.red));
         }
 
         if (description2.contains("heavy intensity rain")) {
+            alert.setTextColor(getResources().getColor(R.color.red));
             alert.setText("Heavy Rain fall on " + dateText2 + ", Please take preventive measures");
         }
         if (description3.contains("heavy instensity rain")) {
+            alert.setTextColor(getResources().getColor(R.color.red));
             alert.setText("Heavy Rain fall on " + dateText3 + ", Please take preventive measures");
         }
         if (description4.contains("heavy intensity rain")) {
+            alert.setTextColor(getResources().getColor(R.color.red));
             alert.setText("Heavy Rain fall on " + dateText4 + ", Please take preventive measures");
         }
         if (description5.contains("heavy Intensity rain")) {
+            alert.setTextColor(getResources().getColor(R.color.red));
             alert.setText("Heavy Rain fall on " + dateText + ", Please take preventive measures");
         }
     }
